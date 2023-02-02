@@ -1,1 +1,39 @@
+.wraper-card {
+    display: flex;
+    padding: 10px;
+    margin: 1.5rem auto;
+    background-color: #f4f0ff;
+    box-shadow: 0 0 3px 3px rgb(36 21 80);
+    width: 45vw;
+}
+
+.wraper-card > img {
+    width: 150px;
+    height: 180px;
+    margin: 20px;
+}
+
+.wrapper-wishlist{
+    background-color: #131111;
+    padding: 1.5rem;
+}
+
+.wrap-wishlist-data {
+    margin: 5px auto;
+
+}
+
+
+@media screen and (max-width: 820px) {
+    .wraper-card{
+        flex-direction: column;
+        text-align: center;
+        width: 80vw;
+
+    }
+
+    .wraper-card > img{
+      margin: auto;
+    }
+}
 
