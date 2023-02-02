@@ -1,4 +1,3 @@
-
 import React, { createContext, useEffect, useReducer, useState } from "react";
 import "./styles/App.css";
 import { Genres } from "./components/BookMyShow/Genres/Genres";
