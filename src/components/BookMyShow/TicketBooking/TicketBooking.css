@@ -1,90 +1,142 @@
-
-import React, { useContext, useState } from "react";
-import "./TicketBooking.css";
-import { UserContex } from "../../../Home";
-import { NavLink } from "react-router-dom"
-import { Overlay } from "../../OverLay/Overlay";
-
-export function TheaterSeats(props) {
-    const price = useContext(UserContex)
-    const [flag,setFlag] = useState(false);
-  let styleSeat = props.Seats.map((item, index, arr) => {
-    return arr.map((c, i) => {
-      return {
-        seatNo: `${item}-${i}`,
-        flag: false,
-      };
-    });
-  });
-
-  let seatSelected = [];
-
-  const [seatState, setSeatState] = useState([]);
-  const [seatSelect, setSeatSelect] = useState(styleSeat);
-  const seatsSection = (arr, row) => {
-    return arr.map((item, index) => {
-      return (
-        <div
-          id={`${row}-${index}`}
-          className={`seat ${
-            seatSelect[row][index].flag ? "seatSelect-on" : ""
-          }`}
-          key={"seat" + row + "" + index}
-          onClick={(e) => {
-            SeatNumber(`${row}-${index}`, e.target);
-          }}
-        >{`${row}-${index}`}</div>
-      );
-    });
-  };
-  const SeatNumber = (num, arg2) => {
-    let seatSelect1 = seatSelect.map((i, j, arr) => {
-      return i.map((l, m) => {
-        return l.seatNo === num ? { ...l, flag: !l.flag } : l;
-      });
-    });
-    setSeatSelect(seatSelect1);
-    setSeatState([...seatState, num]);
-  };
-
-  const submitSeatSelected = () => {
-    console.log(typeof(props.BookingDate))
-    // if(props.BookingDate === null){
-    //   setFlag(true);
-    //   return;
-    // }
-
-    const ticketDetails = {
-        seats : seatState,
-        noSeats : seatState.length,
-        price,
-        name : props.movieName,
-        BookingDate : props.BookingDate
-    }
-    sessionStorage.setItem('BookingDetails',JSON.stringify(ticketDetails))
+.theater-screen > img {
+    width: 70%;
+    height: 3rem;
+    margin: 2rem 0;
+}
+.book{
+    color: white;
+    padding: 1.5rem;
+}
+.theater-screen {
+    display: flex;
+    justify-content: center;
+    
 }
 
-  const overlayFlagCheck = () => {
-    setFlag(false);
-  }
+.Booking-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+}
 
-  return (
-    <>
-    <div className="seats-grid">
-      <div className="seat-row">{seatsSection(props.Seats, 0)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 1)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 2)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 3)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 4)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 5)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 6)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 7)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 8)}</div>
-      <div className="seat-row">{seatsSection(props.Seats, 9)}</div>
-      <NavLink to="/checkout">
-      <button className="btn-seat" onClick={submitSeatSelected}>Submit</button>
-      </NavLink>
-      </div>
-    </>
-  );
+.border-class > input {
+    height: 2rem;
+    width: 10rem;
+    outline: none;
+    border: none;
+}
+
+.select-theater {
+    height: 2rem;
+    width: 10rem;
+    /* padding: 0 20px; */
+    border: none;
+    outline: none;
+}
+
+.border-class {
+    border-bottom: 1px solid black;
+}
+
+.heading {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.btn-seat {
+    cursor: pointer;
+    margin: 30px;
+    width: 6rem;
+    height: 2rem;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-seat:hover {
+    cursor: pointer;
+    margin: 30px;
+    width: 6rem;
+    height: 2rem;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 4px gray;
+}
+
+.seat-row {
+    display: flex;
+    margin: 1px;
+}
+
+.seats-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: cyan;
+}
+
+.seat {
+    margin: 5px;
+    border: 1px solid rgb(237, 232, 232);
+    padding: 2px;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 15px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+}
+
+.seat:hover {
+    margin: 5px;
+    border: 1px solid black;
+    padding: 2px;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 15px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    box-shadow: 0 0 8px 4px lightblue;
+}
+
+.seatSelect-on {
+    background-color: aqua;
+}
+
+@media only screen and (max-width:768px) {
+    .Booking-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 20px;
+    }
+
+    .border-class {
+        border: none;
+    }
+
+    .select-theater {
+        width: 90%;
+    }
+
+    .border-class > input {
+        width: 90%;;
+    }
+}
+
+@media only screen and (max-width:280px) {
+    .seat {
+        margin: 1px;
+        font-size: 0.5rem;
+        width: 18px;
+        height: 18px;
+    }
+
+    .seat:hover {
+        margin: 1px;
+        font-size: 0.5rem;
+        width: 18px;
+        height: 18px;
+    }
 }
