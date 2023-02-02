@@ -1,1 +1,189 @@
 
+.main-movie-card {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: auto;
+    width: 100%;
+    justify-items: center;
+}
+
+.movieCard {
+    cursor: pointer;
+    transition: box-shadow 0.1s ease-out;
+    color: whitesmoke;
+}
+
+.movie-container{
+    background-color: #131111;
+    padding: 12px;
+    overflow-y: scroll;
+    height: 81.8vh;
+
+}
+.movie-container>h2{
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 2rem;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(100, 30, 22);
+    margin: 40px;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.movieStyleCard {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.movieStyleCard > h4 {
+    margin: 5px;
+}
+
+.imageCard {
+    width: 90%;
+    margin: 5px;
+}
+.movieStyleCard>h4{
+    font-family: 'Poppins', sans-serif;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 10px;
+}
+
+.rating > p {
+    margin: 0;
+}
+.movie-styles {
+    display: flex;
+    margin: 5px;
+}
+
+span {
+    margin: 10px 5px;
+}
+
+.buy-wishlist > button {
+    margin: 20px 20px 20px 0;
+    cursor: pointer;
+    background-color: black;
+    color: #fff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 3px 0px white;
+}
+.buy-wishlist > button:hover{
+    background-color: rgb(232, 220, 220);
+    color: black;
+}
+.movie-styles > img {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
+.movieStyleCard > h4 {
+    font-size: 1.3rem;
+}
+
+@media only screen and (max-width:888px) {
+    .movie-container {
+        margin: 0rem;
+        width: 100%;
+    }
+
+    .main-movie-card {
+        grid-template-columns: repeat(2,1fr);
+        margin: 0px;
+        width: 100%;
+    }
+
+    .movieCard {
+        margin: 5px;
+        cursor: pointer;
+        width: 90%;
+    }
+
+    .movieStyleCard {
+        margin: 0px;
+    }
+
+    .movie-styles > img {
+        width: 150px;
+        height: 150px;
+        margin: 1px;
+    }
+
+    .movie-detils {
+        width: 20rem
+    }
+
+    .movie-styles {
+        flex-wrap: wrap;
+    }
+
+}
+
+@media only screen and (max-width:580px) {
+    .main-movie-card {
+        grid-template-columns: repeat(1,1fr);
+        
+    }
+
+    .movie-styles > img {
+        width: 100px;
+        height: 150px;
+        margin: 1px;
+    }
+
+    .movie-detils {
+        width: 16rem
+    }
+
+    .movie-styles {
+        flex-wrap: wrap;
+    }
+    .movie-right-container > p {
+        font-size: 1rem;
+        width: 15rem;
+    }
+
+    .movie-card-text {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    span {
+        margin: 1px 2px;
+    }
+}
+
+@media only screen and (min-width:820px) and (max-width:1024px) {
+    .movie-container {
+        margin-left: 0rem;
+        width: 100%;
+    }
+
+    .movieCard {
+        margin: 5px;
+        cursor: pointer;
+        width: 90%;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .movieStyleCard {
+        margin: 0px;
+    }
+}
+
